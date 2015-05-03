@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title>{% block title %}
+        {% if info.title %}
+            {{ info.title }} -
+        {% endif %}
+        juliangut.com
+    {% endblock %}</title>
+    {% if info.description %}
+    <meta name="description" content="{{ info.description }}" />
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel='stylesheet' href='bower_components/fontawesome/css/font-awesome.css' />
+    <link rel='stylesheet' href='bower_components/animate.css/animate.css' />
+    <link rel='stylesheet' href='bower_components/slick-carousel/slick/slick.css' />
+    <link rel='stylesheet' href='bower_components/slick-carousel/slick/slick-theme.css' />
+    <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/superslides/dist/stylesheets/superslides.css">
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="theme/styles/highlight_monokai_sublime.css">
+    <link rel="stylesheet" href="theme/styles/main.css">
+    <!-- endbuild -->
+
+    <!-- Google WebFonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body id="body" class="{{ info.template }}">
+    <nav id="nav-main" class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% if info.template != 'home' %}{{ base_url }}{% else %}#body{% endif %}">
+                        <img class="color" src="{{ theme_url }}/images/juliangut-logo-color.svg" />
+                        <img class="mono" src="{{ theme_url }}/images/juliangut-logo-mono.svg" />
+                    </a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <nav id="navbar" class="navbar navbar-collapse collapse">
+                    <ul id="menu-home" class="nav navbar-nav">
+                        {% if info.template != 'home' %}
+                        <li><a href="{{ base_url }}#_about">About</a></li>
+                        <li><a href="{{ base_url }}#_expertise">Expertise</a></li>
+                        <li><a href="{{ base_url }}#_toolbox">Toolbox</a></li>
+                        <li><a href="{{ base_url }}#_contact">Contact</a></li>
+                        <li><a href="{{ base_url }}#_location">Location</a></li>
+                        {% else %}
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#expertise">Expertise</a></li>
+                        <li><a href="#toolbox">Toolbox</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#location">Location</a></li>
+                        {% endif %}
+                        <li><a href="{{ base_url }}/blog">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    {% block main %}{% endblock %}
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                    <div class="col-xs-6">2015 Julián Gutiérrez</div>
+                    <div class="col-xs-6 text-right">
+                        <div class="social">
+                            <a href="https://github.com/juliangut" target="_blank"><i class="fa fa-github-square"></i></a>
+                            <a href="https://www.linkedin.com/pub/juli%C3%A1n-guti%C3%A9rrez-tejada/2b/6b9/291" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+                            <a href="{{ base_url }}/feed"><i class="fa fa-rss-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </footer>
+
+    <a id="go-top" href="#body" class="scroll-to"><i class="fa fa-chevron-up"></i></a>
+
+    {% block scripts %}{% endblock %}
+
+    <script src="../bower_components/requirejs/require.js" data-main="theme/scripts/main.js"></script>
+</body>
+</html>

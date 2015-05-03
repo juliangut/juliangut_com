@@ -1,0 +1,202 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <section id="slides" data-start="background-position: 50% -120px;" data-500="background-position: 50% 0px;">
+        <ul class="slides-container">
+            <li>
+                <div class="slides-detail">
+                    <div class="container">
+                        <h1>Coding with <i class="fa fa-heart"></i> from Madrid</h1>
+                    </div>
+                </li>
+            </li>
+            <li>
+                <div class="slides-detail">
+                    <div class="container">
+                        <h1>Web technologies are my passion</h1>
+                    </div>
+                </li>
+            </li>
+            <li>
+                <div class="slides-detail">
+                    <div class="container">
+                        <h1>The power of Free Software and Open Source</h1>
+                    </div>
+                </li>
+            </li>
+        </ul>
+        <nav class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-chevron-left"></i></a>
+            <a href="#" class="prev"><i class="fa fa-chevron-right"></i></a>
+        </nav>
+        <div class="slide-marker"><a href="#about"><i class="fa fa-angle-double-down"></i></a></div>
+    </section>
+
+    <section id="about" class="presentation-block">
+        <div class="container">
+            <div class="row head">
+                <div class="description">
+                    <h2>About me</h2>
+                    <h4>Web enthusiast</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div>
+                        <div class="identity" data-animation="fadeInLeft">
+                            <img src="{{ theme_url }}/images/identity.jpg" />
+                            <div class="overlay"></div>
+                            <div class="social">
+                                <a href="https://github.com/juliangut" target="_blank"><i class="fa fa-github"></i></a>
+                                <a href="https://www.linkedin.com/pub/juli%C3%A1n-guti%C3%A9rrez-tejada/2b/6b9/291" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description col-md-7">
+                    <p>I'm a 32 year old web developer located on Madrid, focused mainly on both backend and frontend web technologies</p>
+                    <p>I spend most of my time coding because I strongly believe there is no better way to master a technology or technique but through hard practice, commitment and dedication</p>
+                    <p>I also believe in clean, maintainable and testable code that can be clearly managed through agility techniques</p>
+                    <p>I'm a decided Free Software and Open Source supporter, I use Free Software on my day to day, for everything, and contribute to the community, you can find my projects on my github account</p>
+                    <p>Having fun with coding is my motto, at the end of the day if there are going to be only 10 lines of code worth the effort, lets make them count!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="presentation-block dark">
+        <div class="container">
+            <div class="row head">
+                <h2>Expertise</h2>
+                <h4>What I'm on the way to master</h4>
+            </div>
+            <div class="row visible-xs-block">
+                <div class="col-xs-6 gauge">
+                    <input class="knob animated" type="text" data-readonly="true" value="90" data-thickness=".1" data-width="100%" data-fgcolor="#8892bf" />
+                    <h3 style="color: #8892bf">PHP</h3>
+                </div>
+                <div class="col-xs-6 gauge">
+                    <input class="knob animated" type="text" data-readonly="true" value="80" data-thickness=".1" data-width="100%" data-fgcolor="#f7df1e" />
+                    <h3 style="color: #f7df1e">Javascript</h3>
+                </div>
+                <div class="col-xs-6 gauge">
+                    <input class="knob animated" type="text" data-readonly="true" value="75" data-thickness=".1" data-width="100%" data-fgcolor="#e44d26" />
+                    <h3 style="color: #e44d26">HTML5 + CSS3</h3>
+                </div>
+                <div class="col-xs-6 gauge">
+                    <input class="knob animated" type="text" data-readonly="true" value="50" data-thickness=".1" data-width="100%" data-fgcolor="#80bd01" />
+                    <h3 style="color: #80bd01">UX</h3>
+                </div>
+            </div>
+            <div class="row hidden-xs">
+                <div class="col-sm-12">
+                    <div class="diagram" data-animation="bounceIn"></div>
+                    <ul class="legend">
+                        <li data-percent="50" data-color="#80bd01">UX</li>
+                        <li data-percent="70" data-color="#5eb7cb">CSS3</li>
+                        <li data-percent="80" data-color="#e44d26">HTML5</li>
+                        <li data-percent="80" data-color="#f7df1e">Javascript</li>
+                        <li data-percent="90" data-color="#8892bf">PHP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="toolbox" class="presentation-block">
+        <div class="container">
+            <div class="head">
+                <h2>Toolbox</h2>
+                <h4>Up my sleeve</h4>
+            </div>
+            <div class="row">
+                <div id="toolbox-rotator" class="col-md-10 col-md-offset-1">
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-linux.png" />
+                    </div>
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-git.png" />
+                    </div>
+                    <div class="animated" data-animation="bounceIn">
+                        <img src="{{ theme_url }}/images/logo-composer.png" />
+                    </div>
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-bower.png" />
+                    </div>
+                    <div class="animated" data-animation="bounceIn">
+                        <img src="{{ theme_url }}/images/logo-grunt.png" />
+                    </div>
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-npm.png" />
+                    </div>
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-vagrant.png" />
+                    </div>
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-jenkins.png" />
+                    </div>
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-ant.png" />
+                    </div>
+                    <div class="animated" data-animation="fadeIn">
+                        <img src="{{ theme_url }}/images/logo-sass.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="write" class="presentation-block dark">
+        <div class="container">
+            <a href="{{ base_url }}/blog"><h2>My thoughts at <em>juliangut.com/blog</em></h2></a>
+        </div>
+    </section>
+
+    <section id="contact" class="presentation-block">
+        <div class="container">
+            <div class="head">
+                <h2>Contact</h2>
+                <h4>Meet me</h4>
+            </div>
+            <form id="contact-form" class="form-inline flowuplabels" role="form" action="{{ base_url }}/contact.php">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="contact-message alert">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 col-sm-4 col-xs-12">
+                        <label class="float_label" for="name">Name:</label>
+                        <input name="name" value="" id="name" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-md-3 col-sm-4 col-xs-12">
+                        <label class="float_label" for="email">Email:</label>
+                        <input name="email" value="" id="email" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-md-3 col-sm-4 col-xs-12">
+                        <label class="float_label" for="message">Message:</label>
+                        <input name="message" value="" id="message" class="form-control" type="text">
+                    </div>
+                    <div class="form-group col-md-3 col-sm-12 col-xs-12">
+                        <button id="submit" class="btn btn-fancy btn-block" data-style="top-line">
+                            <span class="content">Submit</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="location">
+        <div id="map"></div>
+        <div class="overlay presentation-block light">
+            <div class="container">
+                <div class="head">
+                    <h2>Location</h2>
+                    <h4>Madrid</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "blog.html" %}
+
+{% block main %}
+    <div id="post">
+        <div class="post-head" style="{% if info.image-cover == 'false' %}background-size: auto;{% endif %}{% if info.image %} background-image: url('{{ base_url }}/images/{{ info.image }}'){% endif %}"data-top="background-position: 50% 0px;" data-500="background-position: 50% -50px;">
+            <div class="title">
+                <div class="container">
+                    <h1>{{ info.title }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            {% if info.subtitle %}
+            <div class="row post-subhead">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2 class="subtitle">{{ info.subtitle|raw }}</h2>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-9 .col-sm-push-3 post-content">
+                    {{ content|raw }}
+                </div>
+                <div class="col-md-3 .col-sm-pull-9 post-meta">
+                    <div class=""><i class="fa fa-calendar"></i> {{ published }}</div>
+                    <div class=""><i class="fa fa-pencil"></i> {% if info.author %}{{ info.author }}{% else %}Julián Gutiérrez{% endif %}</div>
+                    <span class="disqus-comment-count" data-disqus-url="{{ base_url }}/{{ post.route }}"><i class="fa fa-comments"></i></span>
+                    <div class=""><i class="fa fa-tag"></i> {% if info.tags %}{{ info.tags }}{% else %}undefined{% endif %}</div>
+                </div>
+            </div>
+
+            <div class="row post-comments">
+                <div class="col-xs-12">
+                    <h2>Comments</h2>
+                </div>
+                <div id="disqus_thread" class="col-md-10 col-md-offset-1"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var disqus_shortname = 'juliangut',
+            disqus_title = '{{ info.title }}';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+{% endblock %}

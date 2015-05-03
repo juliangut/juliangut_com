@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div id="blog">
+        <div class="blog-head" data-start="background-position: 50% 0px;" data-500="background-position: 50% -50px;">
+            <div class="title">
+                <div class="container">
+                    <h1>/home/juliangut/blog</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container blog-list">
+            {% for post in posts %}
+            <div class="blog-post row">
+                <div class="col-md-4 col-md-offset-1 post-image"{% if post.info.image %} style="background-image: url('{{ base_url }}/images/{{ post.info.image }}')"{% endif %}>
+                    <a href="{{ base_url }}/{{ post.route }}"></a>
+                </div>
+                <div class="col-md-6">
+                    <div class="post-meta">
+                        <span><i class="fa fa-calendar"></i> {{ post.published }}</span>
+                        <span><i class="fa fa-pencil"></i> {% if post.info.author %}{{ post.info.author }}{% else %}Julián Gutiérrez{% endif %}</span>
+                        <span class="disqus-comment-count" data-disqus-url="{{ base_url }}/{{ post.route }}"><i class="fa fa-comments"></i></span><br />
+                        <span><i class="fa fa-tag"></i> {% if post.info.tags %}{{ post.info.tags }}{% else %}undefined{% endif %}</span>
+                    </div>
+                    <h2><a href="{{ base_url }}/{{ post.route }}">{{ post.title }}</a></h2>
+                    {% if post.excerpt %}
+                    <div class="post-excerpt">
+                        {{ post.excerpt }}
+                        <div class="text-right">
+                            <a href="{{ base_url }}/{{ post.route }}">Continue reading</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if pagination.total_pages > 1 %}
+        <nav>
+            <div class="container">
+                <ul class="blog-pager pager">
+                    {% if pagination.current_page > 1 %}
+                    <li class="previous"><a href="{{ pagination.base_url }}?page={{ pagination.current_page - 1 }}"><i class="fa fa-arrow-circle-left"></i> Newer posts</a></li>
+                    {% endif %}
+                    {% if pagination.current_page < pagination.total_pages %}
+                    <li class="next"><a href="{{ pagination.base_url }}?page={{ pagination.current_page + 1 }}">Older posts <i class="fa fa-arrow-circle-right"></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var disqus_shortname = 'juliangut';
+
+        (function () {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+{% endblock %}
