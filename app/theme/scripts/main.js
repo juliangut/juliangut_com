@@ -66,7 +66,6 @@ require.config({
 require([
     'jquery',
     'modernizr',
-    'skrollr',
     'highlight',
     'bootstrap',
     'jquery.easing',
@@ -76,7 +75,7 @@ require([
     'jquery.nicescroll',
     'jquery.waypoints',
     'app'
-], function($, Modernizr, skrollr, hljs) {
+], function($, Modernizr, hljs) {
     'use strict';
 
     $('html').niceScroll();
@@ -99,9 +98,4 @@ require([
     }, { offset: '-100px' });
 
     $('#menu-home').onePageNav();
-
-    skrollr.init({
-        smoothScrolling: false,
-        mobileDeceleration: 0.004
-    });
 });
