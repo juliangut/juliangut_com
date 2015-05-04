@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block main %}
-    <section id="slides" data-start="background-position: 50% -120px;" data-500="background-position: 50% 0px;">
+    <section id="slides" class="parallax">
         <ul class="slides-container">
             <li>
                 <div class="slides-detail">
@@ -42,21 +42,19 @@
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    <div>
-                        <div class="identity" data-animation="fadeInLeft">
-                            <img src="{{ theme_url }}/images/identity.jpg" />
-                            <div class="overlay"></div>
-                            <div class="social">
-                                <a href="https://github.com/juliangut" target="_blank"><i class="fa fa-github"></i></a>
-                                <a href="https://www.linkedin.com/pub/juli%C3%A1n-guti%C3%A9rrez-tejada/2b/6b9/291" target="_blank"><i class="fa fa-linkedin"></i></a>
-                            </div>
+                    <div class="identity" data-animation="fadeInLeft">
+                        <img src="{{ theme_url }}/images/identity.jpg" />
+                        <div class="overlay"></div>
+                        <div class="social">
+                            <a href="https://github.com/juliangut" target="_blank"><i class="fa fa-github"></i></a>
+                            <a href="https://www.linkedin.com/pub/juli%C3%A1n-guti%C3%A9rrez-tejada/2b/6b9/291" target="_blank"><i class="fa fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="description col-md-7">
                     <p>I'm a 32 year old web developer located on Madrid, focused mainly on both backend and frontend web technologies</p>
                     <p>I spend most of my time coding because I strongly believe there is no better way to master a technology or technique but through hard practice, commitment and dedication</p>
-                    <p>I also believe in clean, maintainable and testable code that can be clearly managed through agility techniques</p>
+                    <p>I also believe in clean, maintainable and testable code that can be clearly managed through agile techniques</p>
                     <p>I'm a decided Free Software and Open Source supporter, I use Free Software on my day to day, for everything, and contribute to the community, you can find my projects on my github account</p>
                     <p>Having fun with coding is my motto, at the end of the day if there are going to be only 10 lines of code worth the effort, lets make them count!</p>
                 </div>

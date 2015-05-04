@@ -29,12 +29,12 @@ a {
     border: 0;
     border-radius: 0px;
     background-color: #fff;
-    transition: all linear 0.25s;
+    transition: all 0.3s linear;
 
     .navbar-brand {
         height: 70px;
         color: #000;
-        transition: all linear 0.25s;
+        transition: all 0.3s linear;
 
         img.color {
             width: 85px;
@@ -49,7 +49,7 @@ a {
     .navbar-toggle {
         border: 0;
         top: 10px;
-        transition: all linear 0.25s;
+        transition: all 0.3s linear;
 
         &:hover,
         &:focus {
@@ -62,13 +62,13 @@ a {
         margin: 0;
         border: 0;
         background-color: #fff;
-        transition: all linear 0.25s;
+        transition: all 0.3s linear;
 
         a {
             padding: 25px 15px;
             color: #222;
             font-size: 16px;
-            transition: all linear 0.25s;
+            transition: all 0.3s linear;
 
             &:hover {
                 color: #f07f06;
@@ -79,6 +79,7 @@ a {
         &.collapsing,
         &.in {
             float: none;
+            border-bottom: 1px solid #ccc;
 
             a {
                 padding: 15px 25px !important;
@@ -172,10 +173,23 @@ a {
     }
 }
 
+@media (max-width: 767px) {
+    .presentation-block {
+        h2 {
+            font-size: 35px;
+        }
+
+        h4 {
+            font-size: 12px;
+        }
+    }
+}
+
 /* Slider */
 #slides {
     height: 100%;
-    background: url(../images/bg-head.jpg) no-repeat center center;
+    background: #0a0a0a url(../images/bg-head.jpg) no-repeat center 0;
+    background-size: cover;
 
     .slides-detail {
         position: absolute;
@@ -185,7 +199,6 @@ a {
         margin-top: -105px;
         padding: 50px 0;
         text-align: center;
-        transition: background linear 0.25s;
 
         h1 {
             font-size: 56px;
@@ -249,14 +262,14 @@ a {
     }
 }
 
+@media (max-width: 767px) {
+    #slides .slides-detail h1 {
+        font-size: 35px;
+    }
+}
+
 /* About */
 #about {
-    transition: all 0.2s ease-out 0s;
-    border-radius: 5px 5px 0px 0px;
-    background-clip: border-box;
-    z-index: 2;
-    text-align: center;
-
     .identity {
         position: relative;
         width: 370px;
@@ -281,7 +294,7 @@ a {
             border-radius: 50%;
             background-color: #f07f06;
             background-clip: border-box;
-            transition: all 0.6s ease-out 0s;
+            transition: all 0.6s ease;
             opacity: 0;
         }
 
@@ -291,7 +304,8 @@ a {
             left: 0px;
             width: 100%;
             margin: 140px auto 0px;
-            transition: all 0.6s ease-out 0s;
+            text-align: center;
+            transition: all 0.4s ease;
             opacity: 0;
 
             a {
@@ -314,9 +328,28 @@ a {
     }
 }
 
+@media (max-width: 767px) {
+    #about .identity {
+        width: 280px;
+        height: 280px;
+
+        img {
+            width: 280px;
+        }
+
+        .social {
+            margin-top: 90px;
+        }
+
+        &:hover .social {
+            margin-top: 120px;
+        }
+    }
+}
+
 /* Experience */
 #expertise {
-    background: url('../images/bg-expertise.jpg') no-repeat center center;
+    background: #000 url('../images/bg-expertise.jpg') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
 
@@ -392,7 +425,7 @@ a {
 #write {
     padding: 120px 0;
     text-align: center;
-    background: url('../images/bg-typewriter.jpg') no-repeat center center;
+    background: #060606 url('../images/bg-typewriter.jpg') no-repeat center center;
     background-size: cover;
 
     em {
@@ -414,11 +447,7 @@ a {
             height: 2px;
             content: '';
             background-color: #f07f06;
-
-            -webkit-transition: all 0.35s ease-in-out 0s;
-            -webkit-transform: scaleX(0);
-
-            transition: all 0.35s ease-in-out 0s;
+            transition: all 0.35s ease-in-out;
             transform: scaleX(0);
         }
 
@@ -431,7 +460,6 @@ a {
         }
     }
 }
-
 
 /* Location */
 #map {
@@ -456,7 +484,7 @@ a {
         min-height: 52px;
         font-size: 14px;
         opacity: 0;
-        transition: all 0.3s 0.3s;
+        transition: all 0.25s ease;
 
         &.show {
             opacity: 1;
@@ -472,7 +500,7 @@ a {
             left: 25px;
             font-size: 14px;
             font-weight: 300;
-            transition: all 0.3s cubic-bezier(0.23,1,0.32,1) 0.3s;
+            transition: all 0.3s ease-out;
 
             &.filled,
             &.focused {
@@ -522,7 +550,7 @@ a {
     .error-head {
         position: relative;
         height: 500px;
-        background: url(../images/bg-404.jpg) no-repeat center center;
+        background: url(../images/bg-404.jpg) no-repeat center 0;
         background-size: cover;
     }
 
@@ -538,7 +566,7 @@ a {
     .blog-head {
         position: relative;
         height: 500px;
-        background: url(../images/bg-blog.jpg) no-repeat center center;
+        background: url(../images/bg-blog.jpg) no-repeat center 0;
         background-size: cover;
 
         .title {
@@ -619,7 +647,7 @@ a {
     .post-head {
         position: relative;
         height: 500px;
-        background: url(../images/code.jpg) no-repeat center center;
+        background: url(../images/code.jpg) no-repeat center 0;
         background-size: cover;
 
         .title {
@@ -684,10 +712,22 @@ a {
     }
 }
 
+@media (max-width: 767px) {
+    #blog .blog-head h1,
+    #post .post-head h1 {
+        font-size: 35px;
+    }
+
+    #post .post-subhead h2 {
+        font-size: 18px;
+    }
+}
+
 /* Footer */
 footer {
     padding: 30px 0 40px;
     color: #fff;
+    font-size: 12px;
     font-weight: 300;
     line-height: 30px;
     background-color: #353434;
@@ -711,19 +751,19 @@ footer {
     text-decoration: none;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 
     &.display {
         bottom: 0;
     }
+}
 
-    &:hover {
-        right: 20px;
-        width: 80px;
-        height: 80px;
-        line-height: 78px;
-        background-color: rgba(240, 127, 6, 0.7);
-    }
+html.no-touch #go-to:hover {
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    line-height: 78px;
+    background-color: rgba(240, 127, 6, 0.7);
 }
 
 /* Scroll bar */
@@ -731,7 +771,7 @@ footer {
     width: 10px !important;
     background: rgba(0, 0, 0, 0.25) !important;
     z-index: 10000 !important;
-    transition: all linear 0.15s;
+    transition: all 0.15s linear;
 
     div {
         margin: 0 3px !important;
@@ -739,7 +779,7 @@ footer {
         border: none !important;
         border-radius: 0 !important;
         background: rgba(0, 0, 0, 0.25) !important;
-        transition: all linear 0.15s;
+        transition: all 0.15s linear;
     }
 
     &:hover {

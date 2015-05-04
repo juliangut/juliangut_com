@@ -98,4 +98,24 @@ require([
     }, { offset: '-100px' });
 
     $('#menu-home').onePageNav();
+
+    $('#menu-home a').click(function() {
+        var $navbar = $('#navbar');
+        if ($navbar.hasClass('collapsing') || $navbar.hasClass('in')) {
+            $('.navbar-toggle').trigger('click');
+        }
+    });
+
+    $('.parallax').each(function(){
+        var $bgobj = $(this),
+            coords = $bgobj.css('background-position').split(' '),
+            baseYPos = parseInt(coords[1].replace('px', ''));
+
+        $(window).scroll(function() {
+            var yPos = parseInt($(window).scrollTop() / 10),
+                newCoords = [coords[0], (baseYPos - yPos) + 'px'];
+
+            $bgobj.css({ backgroundPosition: newCoords.join(' ') });
+        });
+    });
 });

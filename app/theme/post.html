@@ -2,7 +2,7 @@
 
 {% block main %}
     <div id="post">
-        <div class="post-head" style="{% if info.image-cover == 'false' %}background-size: auto;{% endif %}{% if info.image %} background-image: url('{{ base_url }}/images/{{ info.image }}'){% endif %}"data-top="background-position: 50% 0px;" data-500="background-position: 50% -50px;">
+        <div class="post-head parallax" style="{% if info.image-cover == 'false' %}background-size: auto;{% endif %}{% if info.image %} background-image: url('{{ base_url }}/images/{{ info.image }}'){% endif %}">
             <div class="title">
                 <div class="container">
                     <h1>{{ info.title }}</h1>
