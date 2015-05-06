@@ -694,6 +694,10 @@ a {
         p {
             margin-bottom: 20px;
         }
+
+        code, pre {
+            border-radius: 0;
+        }
     }
 
     .post-meta {
