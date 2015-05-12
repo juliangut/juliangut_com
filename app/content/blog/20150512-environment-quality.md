@@ -1,6 +1,6 @@
 image: 20150512-environment-quality.png
 image-cover: true
-tags: git, github
+tags: quality, php, grunt
 title: Environment quality
 subtitle: Not only code needs to be checked
 ----
