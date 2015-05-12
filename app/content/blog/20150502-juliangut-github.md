@@ -1,4 +1,4 @@
-image: github-header.jpg
+image: 20150502-github-header.jpg
 image-cover: true
 tags: git, github
 title: Juliangut Github account

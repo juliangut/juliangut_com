@@ -1,4 +1,4 @@
-image: vagrant-header.png
+image: 20150503-vagrant-header.png
 image-cover: false
 tags: vagrant, ruby, yaml
 title: Configure Vagrant hosts with YAML
