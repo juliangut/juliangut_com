@@ -16,5 +16,6 @@
     "swiftmailer/swiftmailer": "~5.4"
   },
   "require-dev": {
+    "laravel/homestead": "^2.1"
   }
 }
