@@ -31,7 +31,8 @@
     "jquery-migrate": "~1.2.1",
     "slick-carousel": "~1.5.2",
     "jquery-waypoints": "~3.1.1",
-    "raphael": "~2.1.4"
+    "raphael": "~2.1.4",
+    "jssocials": "~0.2.0"
   },
   "devDependencies": {}
 }

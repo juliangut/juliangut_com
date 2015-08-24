@@ -796,3 +796,14 @@ html.no-touch #go-to:hover {
         }
     }
 }
+
+/* Socials */
+#share {
+    margin-top: 15px;
+}
+.jssocials-share-link {
+    border-radius: 50%;
+}
+.jssocials-share-link i::before {
+    color: #acacac;
+}

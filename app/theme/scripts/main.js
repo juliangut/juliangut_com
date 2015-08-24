@@ -30,7 +30,8 @@ require.config({
         text: '../../../bower_components/requirejs-plugins/lib/text',
         'jquery-waypoints': '../../../bower_components/jquery-waypoints/lib/noframework.waypoints.min',
         'jquery.waypoints': '../../../bower_components/jquery-waypoints/lib/jquery.waypoints',
-        raphael: '../../../bower_components/raphael/raphael'
+        raphael: '../../../bower_components/raphael/raphael',
+        jssocials: '../../../bower_components/jssocials/dist/jssocials'
     },
     shim: {
         jquery: {
@@ -74,6 +75,7 @@ require([
     'jquery.localScroll',
     'jquery.nicescroll',
     'jquery.waypoints',
+    'jssocials',
     'app'
 ], function($, Modernizr, hljs) {
     'use strict';
@@ -117,5 +119,11 @@ require([
 
             $bgobj.css({ backgroundPosition: newCoords.join(' ') });
         });
+    });
+
+    $('#share').jsSocials({
+        showLabel: false,
+        showCount: false,
+        shares: ['email', 'twitter', 'facebook', 'googleplus', 'linkedin']
     });
 });
