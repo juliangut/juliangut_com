@@ -99,18 +99,19 @@ $container->register(new \Jgut\Slim\Controller\Registrator);
 We need a way to tell Registrator what controller we want to be registered, we do this using Slim App settings, here we have everything in a single file. Check Rob Allen's [slim3-skeleton](https://github.com/akrabat/slim3-skeleton/) to see how to separate a Slim3 application in several logical files.
 
 ```php
-$settings = [
-    'controllers' => [
-        'MyWeb\HomeController',
-        'MyWeb\UserController',
-    ],
+$controllers => [
+    'MyWeb\HomeController',
+    'MyWeb\UserController',
 ];
 
-$app = new \Slim\App($settings);
+$app = new \Slim\App();
 
 $container = $app->getContainer();
 
-$container->register(new \Jgut\Slim\Controller\Registrator);
+// Register Controllers
+foreach (Resolver::resolve($container, $controllers) as $controller => $callback) {
+    $container[$controller] = $callback;
+}
 
 // Register other services in $container here
 
@@ -142,7 +143,7 @@ class BlogController extends Controller
 {
     protected $pager;
 
-    public function __construct($pager)
+    public function __construct(\Fake\Pager $pager)
     {
         // Initializations
     }

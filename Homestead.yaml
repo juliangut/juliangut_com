@@ -12,7 +12,7 @@ keys:
     - ~/.ssh/id_rsa
 
 folders:
-    - map: "/home/julian/Develop/juliangut_com"
+    - map: "./"
       to: "/home/vagrant/juliangut-com"
 
 sites:
