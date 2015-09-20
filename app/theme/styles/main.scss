@@ -188,6 +188,7 @@ a {
 /* Slider */
 #slides {
     height: 100%;
+    min-height: 200px;
     background: #0a0a0a url(../images/bg-head.jpg) no-repeat center 0;
     background-size: cover;
 
@@ -249,14 +250,17 @@ a {
 
     .slide-marker {
         position: absolute;
-        left: 50%;
         bottom: 0;
-        margin: 0 0 10px -17px;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #fff;
+        font-size: 20px;
         z-index: 2;
 
         a {
-            font-size: 40px;
             color: #fff;
+            font-size: 40px;
             text-decoration: none;
         }
     }
@@ -762,7 +766,7 @@ footer {
     }
 }
 
-html.no-touch #go-to:hover {
+.no-touch #go-top:hover {
     right: 20px;
     width: 80px;
     height: 80px;
@@ -792,7 +796,7 @@ html.no-touch #go-to:hover {
 
         div {
             width: 10px !important;
-            background: rgba(0, 0, 0, 0.5) !important;
+            background: rgba(240, 127, 6, 0.5) !important;
         }
     }
 }

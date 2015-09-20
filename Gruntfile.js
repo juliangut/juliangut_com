@@ -53,7 +53,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       app: {
-        src: ['<%= appConfig.app %>/theme/layout.html'],
+        src: ['<%= appConfig.app %>/theme/base.html'],
         ignorePath:  /(\.\.\/){1,2}/
       }
     },
@@ -72,7 +72,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= appConfig.app %>/theme/layout.html',
+      html: '<%= appConfig.app %>/theme/base.html',
       options: {
         dest: '<%= appConfig.dist %>/public/theme/'
       }
