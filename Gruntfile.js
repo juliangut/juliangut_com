@@ -59,7 +59,7 @@ module.exports = function (grunt) {
     },
 
     // Settings for grunt-bower-requirejs
-    bower: {
+    bowerRequirejs: {
       app: {
         options: {
           exclude: ['requirejs']
@@ -439,7 +439,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
-    'bower:app',
+    'bowerRequirejs:app',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
