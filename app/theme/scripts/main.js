@@ -99,14 +99,17 @@ require([
         $('.navbar').toggleClass('navbar-min');
     }, { offset: '-100px' });
 
-    $('#menu-home').onePageNav();
-
-    $('#menu-home a').click(function() {
+    $('#menu-home a, #janitor-nav a').click(function() {
         var $navbar = $('#navbar');
         if ($navbar.hasClass('collapsing') || $navbar.hasClass('in')) {
             $('.navbar-toggle').trigger('click');
         }
     });
+
+    if (document.location.hash) {
+        var hash = document.location.hash.replace('#_', '#');
+        $(window).scrollTo($(hash));
+    }
 
     $('#share').jsSocials({
         showLabel: false,

@@ -489,10 +489,4 @@ define([
             triggerOnce: true
         });
     });
-
-    /* Initial hash load */
-    if (document.location.hash) {
-        var hash = document.location.hash.replace('#_', '#');
-        $(window).scrollTo($(hash));
-    }
 });
