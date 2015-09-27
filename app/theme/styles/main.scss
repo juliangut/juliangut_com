@@ -187,10 +187,16 @@ a {
 
 /* Slider */
 #slides {
-    height: 100%;
-    min-height: 200px;
-    background: #0a0a0a url(../images/bg-head.jpg) no-repeat center 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-height: 35em;
+    text-align: center;
+    justify-content: center;
+    background: url(../images/bg-head.jpg) center center fixed no-repeat;
     background-size: cover;
+    overflow: hidden;
 
     .slides-detail {
         position: absolute;

@@ -108,19 +108,6 @@ require([
         }
     });
 
-    $('.parallax').each(function(){
-        var $bgobj = $(this),
-            coords = $bgobj.css('background-position').split(' '),
-            baseYPos = parseInt(coords[1].replace('px', ''));
-
-        $(window).scroll(function() {
-            var yPos = parseInt($(window).scrollTop() / 10),
-                newCoords = [coords[0], (baseYPos - yPos) + 'px'];
-
-            $bgobj.css({ backgroundPosition: newCoords.join(' ') });
-        });
-    });
-
     $('#share').jsSocials({
         showLabel: false,
         showCount: false,
