@@ -465,6 +465,23 @@ a {
     }
 }
 
+/* Projects */
+#projects .janitor {
+    div:first-child {
+        text-align: center;
+    }
+
+    img {
+        width: 120px;
+        margin-top: 20px;
+    }
+
+    h3 {
+        color: #e5b700;
+        font-weight: bold;
+    }
+}
+
 /* Location */
 #map {
     width: 100%;
@@ -482,6 +499,7 @@ a {
     }
 }
 
+/* Contact */
 #contact-form {
     .contact-message {
         margin: 0 0 15px;

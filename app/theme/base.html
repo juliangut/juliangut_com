@@ -31,6 +31,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="theme/styles/highlight_monokai_sublime.css">
     <link rel="stylesheet" href="theme/styles/main.css">
+    <link rel="stylesheet" href="theme/styles/janitor.css">
     <!-- endbuild -->
 
     <!-- Google WebFonts -->
@@ -40,9 +41,9 @@
 <body id="body" class="{{ info.template }}">
     {% block content %}{% endblock %}
 
-    {% block scripts %}{% endblock %}
-
     <script src="../bower_components/requirejs/require.js" data-main="theme/scripts/main.js"></script>
+
+    {% block scripts %}{% endblock %}
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

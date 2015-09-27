@@ -5,7 +5,7 @@
         <div class="navbar-inner">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{% if info.template != 'home' %}{{ base_url }}{% else %}#body{% endif %}">
+                    <a class="navbar-brand" href="{% if info.template != 'index' %}{{ base_url }}{% else %}#body{% endif %}">
                         <img class="color" src="{{ theme_url }}/images/juliangut-logo-color.svg" />
                         <img class="mono" src="{{ theme_url }}/images/juliangut-logo-mono.svg" />
                     </a>
@@ -22,14 +22,14 @@
                         <li><a href="{{ base_url }}#_about">About</a></li>
                         <li><a href="{{ base_url }}#_expertise">Expertise</a></li>
                         <li><a href="{{ base_url }}#_toolbox">Toolbox</a></li>
+                        <li><a href="{{ base_url }}#_projects">Projects</a></li>
                         <li><a href="{{ base_url }}#_contact">Contact</a></li>
-                        <li><a href="{{ base_url }}#_location">Location</a></li>
                         {% else %}
                         <li><a href="#about">About</a></li>
                         <li><a href="#expertise">Expertise</a></li>
                         <li><a href="#toolbox">Toolbox</a></li>
+                        <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#location">Location</a></li>
                         {% endif %}
                         <li><a href="{{ base_url }}/blog">Blog</a></li>
                     </ul>
