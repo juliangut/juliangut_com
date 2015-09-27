@@ -3,7 +3,6 @@ define([
     'raphael',
     'jquery.easing',
     'jquery-migrate',
-    'jQuery-One-Page-Nav',
     'superslides',
     'jquery-knob',
     'slick-carousel',

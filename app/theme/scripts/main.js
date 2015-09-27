@@ -1,20 +1,17 @@
 require.config({
     paths: {
         highlight: './highlight.pack',
-        bootstrap: '../../../bower_components/bootstrap/dist/js/bootstrap',
-        fontawesome: '../../../bower_components/fontawesome/fonts/*',
-        imagesloaded: '../../../bower_components/imagesloaded/imagesloaded',
-        'jQuery-One-Page-Nav': '../../../bower_components/jQuery-One-Page-Nav/jquery.nav',
         jquery: '../../../bower_components/jquery/dist/jquery',
-        'jquery-backstretch': '../../../bower_components/jquery-backstretch/jquery.backstretch',
-        'jquery-knob': '../../../bower_components/jquery-knob/js/jquery.knob',
         'jquery-migrate': '../../../bower_components/jquery-migrate/jquery-migrate',
         'jquery.easing': '../../../bower_components/jquery.easing/js/jquery.easing',
-        'jquery.localScroll': '../../../bower_components/jquery.localScroll/jquery.localScroll',
+        bootstrap: '../../../bower_components/bootstrap/dist/js/bootstrap',
+        fontawesome: '../../../bower_components/fontawesome/fonts/*',
+        'jquery-knob': '../../../bower_components/jquery-knob/js/jquery.knob',
         'jquery.nicescroll': '../../../bower_components/jquery.nicescroll/jquery.nicescroll',
         'jquery.scrollTo': '../../../bower_components/jquery.scrollTo/jquery.scrollTo',
-        modernizr: '../../../bower_components/modernizr/modernizr',
-        skrollr: '../../../bower_components/skrollr/src/skrollr',
+        'jquery.localScroll': '../../../bower_components/jquery.localScroll/jquery.localScroll',
+        'jquery-waypoints': '../../../bower_components/jquery-waypoints/lib/noframework.waypoints.min',
+        'jquery.waypoints': '../../../bower_components/jquery-waypoints/lib/jquery.waypoints',
         'slick-carousel': '../../../bower_components/slick-carousel/slick/slick.min',
         superslides: '../../../bower_components/superslides/dist/jquery.superslides',
         async: '../../../bower_components/requirejs-plugins/src/async',
@@ -28,17 +25,12 @@ require.config({
         propertyParser: '../../../bower_components/requirejs-plugins/src/propertyParser',
         'Markdown.Converter': '../../../bower_components/requirejs-plugins/lib/Markdown.Converter',
         text: '../../../bower_components/requirejs-plugins/lib/text',
-        'jquery-waypoints': '../../../bower_components/jquery-waypoints/lib/noframework.waypoints.min',
-        'jquery.waypoints': '../../../bower_components/jquery-waypoints/lib/jquery.waypoints',
         raphael: '../../../bower_components/raphael/raphael',
         jssocials: '../../../bower_components/jssocials/dist/jssocials'
     },
     shim: {
         jquery: {
             exports: '$'
-        },
-        modernizr: {
-            exports: 'Modernizr'
         },
         highlight: {
             exports: 'hljs'
@@ -49,9 +41,6 @@ require.config({
         bootstrap: [
             'jquery'
         ],
-        skrollr: {
-            exports: 'skrollr'
-        },
         'jquery.localScroll': [
             'jquery.scrollTo'
         ]
@@ -66,7 +55,6 @@ require.config({
 
 require([
     'jquery',
-    'modernizr',
     'highlight',
     'bootstrap',
     'jquery.easing',
@@ -77,7 +65,7 @@ require([
     'jquery.waypoints',
     'jssocials',
     'app'
-], function($, Modernizr, hljs) {
+], function($, hljs) {
     'use strict';
 
     $('html').niceScroll();
