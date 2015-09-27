@@ -46,11 +46,11 @@ require([
     'jquery',
     'highlight',
     'bootstrap',
-    'jquery.easing',
     'jquery-migrate',
+    'jquery.easing',
+    'jquery.nicescroll',
     'jquery.scrollTo',
     'jquery.localScroll',
-    'jquery.nicescroll',
     'jquery.waypoints',
     'jssocials',
     'app'

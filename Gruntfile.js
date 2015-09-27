@@ -46,7 +46,14 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      buildfile: ['<%= appConfig.dist %>/public/theme/scripts/build.txt'],
+      build: {
+        files: [{
+            src: [
+                '<%= appConfig.dist %>/public/theme/scripts/jquery-waypoints.js',
+                '<%= appConfig.dist %>/public/theme/scripts/build.txt'
+            ]
+        }]
+      },
       server: ['.tmp']
     },
 
@@ -457,7 +464,7 @@ module.exports = function (grunt) {
     'requirejs:dist',
     'replace:requirejs',
     'uglify:requirejs',
-    'clean:buildfile'
+    'clean:build'
   ]);
 
   grunt.registerTask('default', [

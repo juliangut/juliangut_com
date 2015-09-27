@@ -1,12 +1,9 @@
 define([
     'jquery',
     'raphael',
-    'jquery.easing',
-    'jquery-migrate',
     'superslides',
     'jquery-knob',
-    'slick-carousel',
-    'jquery.scrollTo'
+    'slick-carousel'
 ], function ($, Raphael) {
     'use strict';
 
