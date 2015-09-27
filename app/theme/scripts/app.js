@@ -6,8 +6,7 @@ define([
     'superslides',
     'jquery-knob',
     'slick-carousel',
-    'jquery.scrollTo',
-    'async!http://maps.google.com/maps/api/js?sensor=false'
+    'jquery.scrollTo'
 ], function ($, Raphael) {
     'use strict';
 
@@ -35,7 +34,7 @@ define([
             );
         },
         {
-            offset: '80%',
+            offset: '90%',
             triggerOnce: true
         });
     });
@@ -297,195 +296,6 @@ define([
                 $message.removeClass('alert-warning show');
                 $form.find('.btn').removeAttr('disabled');
             }, 5000);
-        });
-    });
-
-    /* Location */
-    function initializeGoogleMap() {
-        var mapLatLng = new google.maps.LatLng(40.4178, -3.703333),
-            mapOptions = {
-                center: mapLatLng,
-                zoom: 16,
-                mapTypeControl: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                panControl: false,
-                zoomControl: false,
-                scaleControl: false,
-                streetViewControl: false,
-                scrollwheel: false
-            };
-
-        // Styles on https://snazzymaps.com/
-        var mapStyles = [
-            {
-                'featureType': 'landscape',
-                'stylers': [
-                    {
-                        'saturation': -100
-                    },
-                    {
-                        'lightness': 65
-                    },
-                    {
-                        'visibility': 'on'
-                    }
-                ]
-            },
-            {
-                'featureType': 'poi',
-                'stylers': [
-                    {
-                        'saturation': -100
-                    },
-                    {
-                        'lightness': 51
-                    },
-                    {
-                        'visibility': 'on'
-                    }
-                ]
-            },
-            {
-                'featureType': 'poi.attraction',
-                'elementType': 'all',
-                'stylers': [
-                    {
-                        'visibility': 'off'
-                    }
-                ]
-            },
-            {
-                'featureType': 'poi.government',
-                'elementType': 'all',
-                'stylers': [
-                    {
-                        'visibility': 'off'
-                    }
-                ]
-            },
-            {
-                'featureType': 'poi.business',
-                'elementType': 'all',
-                'stylers': [
-                    {
-                        'visibility': 'off'
-                    }
-                ]
-            },
-            {
-                'featureType': 'poi.place_of_worship',
-                'elementType': 'all',
-                'stylers': [
-                    {
-                        'visibility': 'off'
-                    }
-                ]
-            },
-            {
-                'featureType': 'road.highway',
-                'stylers': [
-                    {
-                        'saturation': -100
-                    },
-                    {
-                        'visibility': 'simplified'
-                    }
-                ]
-            },
-            {
-                'featureType': 'road.arterial',
-                'stylers': [
-                    {
-                        'saturation': -100
-                    },
-                    {
-                        'lightness': 30
-                    },
-                    {
-                        'visibility': 'on'
-                    }
-                ]
-            },
-            {
-                'featureType': 'road.local',
-                'stylers': [
-                    {
-                        'saturation': -100
-                    },
-                    {
-                        'lightness': 40
-                    },
-                    {
-                        'visibility': 'simplified'
-                    }
-                ]
-            },
-            {
-                'featureType': 'transit',
-                'stylers': [
-                    {
-                        'saturation': -100
-                    },
-                    {
-                        'visibility': 'simplified'
-                    }
-                ]
-            },
-            {
-                'featureType': 'administrative.province',
-                'stylers': [
-                    {
-                        'visibility': 'off'
-                    }
-                ]
-            },
-            {
-                'featureType': 'water',
-                'elementType': 'labels',
-                'stylers': [
-                    {
-                        'visibility': 'on'
-                    },
-                    {
-                        'lightness': -25
-                    },
-                    {
-                        'saturation': -100
-                    }
-                ]
-            },
-            {
-                'featureType': 'water',
-                'elementType': 'geometry',
-                'stylers': [
-                    {
-                        'hue': '#ffff00'
-                    },
-                    {
-                        'lightness': -25
-                    },
-                    {
-                        'saturation': -97
-                    }
-                ]
-            }
-        ];
-
-        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        map.setOptions({styles: mapStyles});
-
-        google.maps.event.addDomListener(window, 'resize', function() {
-            map.setCenter(mapLatLng);
-        });
-    }
-
-    $('#map').each(function() {
-        $(this).waypoint(function() {
-            initializeGoogleMap();
-        },
-        {
-            offset: '80%',
-            triggerOnce: true
         });
     });
 });
