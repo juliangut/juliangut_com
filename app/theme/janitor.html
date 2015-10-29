@@ -38,7 +38,21 @@
 
             <div class="slide-marker">
                 Learn more<br>
-                <a href="#start"><i class="fa fa-angle-double-down"></i></a>
+                <a href="#introduction"><i class="fa fa-angle-double-down"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="introduction" class="introduction">
+        <div class="container">
+            <div class="row head">
+                <div class="col-sm-12">
+                    <h2>Introduction</h2>
+                </div>
+                <div class="col-sm-10 col-sm-push-1">
+                    <p>Janitor helps you with the task of controlling maintenance status on your page by prviding a decoupled easily configurable service.</p>
+                    <p>By setting one or several conditions for maintenance mode activation and allowing you to handle the situation yourself when the time comes or leaving Janitor to do the heavy lifting, you have your web ready and covered for maintenance periods.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -57,7 +71,7 @@
                     <p>Use Composer and include it in your page</p>
                 </div>
                 <div class="col-md-8">
-                    <pre><code class="bash">php composer.phar require juliangut/janitor</code></pre>
+                    <pre><code class="bash">composer require juliangut/janitor</code></pre>
                     <pre><code class="php">require 'vendor/autoloader.php';</code></pre>
                 </div>
             </div>
@@ -135,7 +149,6 @@ if ($janitor->handle()) {
             <div class="row">
                 <div class="col-sm-3 hidden-xs">
                     <ul class="menu">
-                        <li><a href="#intro">Introduction</a></li>
                         <li><a href="#watchers">Watchers</a></li>
                         <li><a href="#scheduled_watchers">Scheduled Watchers</a></li>
                         <li><a href="#excluders">Excluders</a></li>
@@ -144,17 +157,13 @@ if ($janitor->handle()) {
                     </ul>
                 </div>
                 <div class="col-sm-9">
-                    <h3 id="introduction">Introduction</h3>
-                    <p>Janitor helps you with the task of controling maintenance status on your page.</p>
-                    <p>Set conditions for maintenance mode activation and handle maintenance mode yourself or configure Janitor to do the heavy lifting for you.</p>
-
                     <h3 id="watchers">Watchers</h3>
                     <p>Every possible condition that leads to maintenance mode activation is defined with a Janitor <i>watcher</i>. Define as many watchers as you need to cover all the possible scenarios that will trigger maintenance mode on your page.</p>
                     <p>There are two kinds of watchers, lets say a 'static' kind of watcher in which maintenance mode activation will be determied based on a condition check in real time, and 'scheduled' watchers in which maintenance mode will be determined by a given timeframe.</p>
                     <p>Watchers are checked in the order they are included so that when a watcher is determined to be active no other watcher will be checked. Set the more specific watchers first and the more general after.</p>
 
                     <h4>Manual watcher</h4>
-                    <p>It's the simplest watcher possible. At creation time it is set to be active or not and so when the time to determine maintenance mode the value of the provider will be checked.</p>
+                    <p>It's the simplest watcher possible. At creation time it is set to be active or not and so when the time to determine maintenance mode comes the value of the provider will be checked.</p>
                     <p>This watcher's best fit is in project with maintenance configuration variable that can be passed to the watcher.</p>
                     <pre><code class="php">$configuration = [
     // ...
@@ -167,22 +176,25 @@ $janitor->addWatcher($manualWatcher);</code></pre>
                     <h4>File watcher</h4>
                     <p>This watcher will check for the existance of a file in the filesystem to determine if maintenance mode is active.</p>
                     <p>With this watcher a file can be created at the begining of an automatic maintenance processess and removed at the end of it so that the file can be watched for.</p>
-                    <pre><code class="php">$fileWatcher = new \Janitor\Watcher\File('/tmp/maintenance');
+                    <pre><code class="php">touch(sys_get_temp_dir() . '/maintenance');
+
+$fileWatcher = new \Janitor\Watcher\File(sys_get_temp_dir() . '/maintenance');
 $janitor->addWatcher($fileWatcher);</code></pre>
 
                     <h4>Environment watcher</h4>
                     <p>Similarly to file watcher environment watcher watches for the existance and value of an environment variable to determine maintenance mode.</p>
                     <p>An environment variable such as 'maintenance' can be set and destroyed while this watcher watches for it.</p>
                     <pre><code class="php">putenv('maintenance=On');
+
 $envWatcher = new \Janitor\Watcher\Environment('maintenance', 'On');
 $janitor->addWatcher($envWatcher);</code></pre>
 
                     <h3 id="scheduled_watchers">Scheduled Watchers</h3>
-                    <p>While normal 'static' watchers are OK for punctual situations or to be controlled by an external maintenance process, if periodical maintenance tasks are to be taken in the system then an scheduled watcher is a better fit.</p>
+                    <p>While normal 'static' watchers are OK for punctual situations or to be controlled by an external maintenance process, if periodical maintenance tasks are to be taken in the system then a scheduled watcher is a better fit.</p>
                     <p>With scheduled watchers a date/time (in the future) and a timeframe will be defined to set maintenance mode activation and extend it certain amount of time.</p>
 
                     <h4>Fixed scheduled watcher</h4>
-                    <p>Quite similar to manual watcher defines both start and end date/times for maintenance so that when the time comes and during the specified time window the page will be set on maintenance mode.</p>
+                    <p>Quite similar to manual watcher, defines both start and end date/times for maintenance so that when the time comes and during the specified time window the page will be set on maintenance mode.</p>
                     <pre><code class="php">$fixedWatcher = new \Janitor\Watcher\Scheduled\Fixed(new \DateTime('2016/01/01 0:0:0'), new \DateTime('2016/01/01 1:0:0'));
 $janitor->addWatcher($fixedWatcher);</code></pre>
 
@@ -195,7 +207,8 @@ $janitor->addWatcher($cronWatcher);</code></pre>
                     <h3 id="excluders">Excluders</h3>
                     <p>Once maintenance mode is determined to be active there is still a way to bypass it thanks to certain conditions defined by Janitor <i>Excluders</i></p>
                     <p>Excluders define conditions that if met will allow access to the page even if maintenance mode is active. Useful to grant you or your team access to the page after maintennace tasks have completed and before opening access again to check everything went smoothly.</p>
-                    <p>As with watchers excluders are tested in the order they are included and when one is set to exclude mainenance mode the verification chain stops. On the contraty of what happened with watchers, set general excluders first and the more specific after them.
+                    <p>As with watchers excluders are tested in the order they are included and when one is set to exclude mainenance mode the verification chain stops.</p>
+                    <p>On the contraty of what happened with watchers, set general excluders first and the more specific after them.
 
                     <h4>IP excluder</h4>
                     <p>Set allowed IPs to be excluded from maintenance mode so that requests coming from those IPs will not be affected by maintenance mode and will access the page as normal.</p>
@@ -279,12 +292,15 @@ $janitor->setStrategy(new \MyStrategy);</code></pre>
                     <h3>Slim3</h3>
                     <pre><code class="php">use Janitor\Janitor;
 use Janitor\ScheduledWatcher;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Body;
 
 // Initialize Janitor with watchers and excluders
 $janitor = new Janitor($watchers, $excluders);
 
-$app->add(function($request, $response, $next, callable $next) use ($janitor) {
+// Add middleware
+$app->add(function(RequestInterface $request, ResponseInterface $response, callable $next) use ($janitor) {
     if ($janitor->inMaintenance() && !$janitor->isExcluded()) {
         $watcher = $janitor->getActiveWatcher();
 
@@ -305,7 +321,9 @@ $app->add(function($request, $response, $next, callable $next) use ($janitor) {
                 </div>
                 <div class="col-md-6">
                     <h3>StackPHP</h3>
-                    <pre><code class="php">use Symfony\Component\HttpKernel\HttpKernelInterface;
+                    <pre><code class="php">use Janitor\Janitor;
+use Janitor\ScheduledWatcher;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -314,7 +332,7 @@ class Maintenance implements HttpKernelInterface
     private $app;
     private $janitor;
 
-    public function __construct(HttpKernelInterface $app, \Janitor\Janitor $janitor)
+    public function __construct(HttpKernelInterface $app, Janitor $janitor)
     {
         $this->app = $app;
         $this->janitor = $janitor;
@@ -327,7 +345,7 @@ class Maintenance implements HttpKernelInterface
 
             // Handle maintenance mode
             $message = 'Maintenance mode is active';
-            if ($watcher instanceof \Janitor\ScheduledWatcher) {
+            if ($watcher instanceof ScheduledWatcher) {
                 $message = 'Maintenance mode is active until' . $watcher->getEnd()->format('Y/m/d H:i:s');
             }
 
@@ -336,11 +354,12 @@ class Maintenance implements HttpKernelInterface
 
         return $this->app->handle($request, $type, $catch);
     }
-}</code></pre>
-                    <pre><code class="php">// Initialize Janitor with watchers and excluders
-$janitor = new \Janitor\Janitor($watchers, $excluders);
+}
 
-$stack = (new Stack\Builder())
+// Initialize Janitor with watchers and excluders
+$janitor = new Janitor($watchers, $excluders);
+
+$stack = (new \Stack\Builder())
     ->push('\Maintenance', $janitor);
 
 $app = $stack->resolve($app);</code></pre>
