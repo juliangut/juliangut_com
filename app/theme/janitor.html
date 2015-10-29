@@ -201,7 +201,7 @@ $janitor->addWatcher($fixedWatcher);</code></pre>
                     <h4>Cron scheduled watcher</h4>
                     <p>Cron watcher lets you define periodical maintenance timeframes with <a href="https://en.wikipedia.org/wiki/Cron#CRON_expression">cron expression</a> syntax.</p>
                     <p>If you have periodical maintenance tasks, all occurring on the same moment every week, month, year, ... then this watcher is your best option. Define that same moment with a cron expression and a time interval and your page will be down for maintenance during your periodical processes.</p>
-                    <pre><code class="php">$cronWatcher = new \Janitor\Watcher\Cron('0 0 1 * *', new \DateInterval('PT2H'));
+                    <pre><code class="php">$cronWatcher = new \Janitor\Watcher\Scheduled\Cron('0 0 1 * *', new \DateInterval('PT2H'));
 $janitor->addWatcher($cronWatcher);</code></pre>
 
                     <h3 id="excluders">Excluders</h3>
@@ -264,9 +264,9 @@ $janitor = new \Janitor\Janitor($watchers, $excluders, new \MyStrategy);
 $janitor->setStrategy(new \MyStrategy);</code></pre>
 
                     <h3 id="service">Service</h3>
-                    <p>Aside of aiding you with maintenance mode activation you can register Janitor as a service in your project so that you can access future maintenance periods, helpful to keep your users informed.</p>
+                    <p>Aside of aiding you with maintenance mode activation you can use Janitor as a service in your project so that you can access future maintenance periods, helpful to keep your users informed.</p>
                     <pre><code>foreach ($janitor->getScheduledTimes() as $time) {
-    echo 'Maintenance from ' . $time->getStart()->format('d/M/Y H:i:s') . ' to ' . $time->getEnd()->format('d/M/Y H:i:s');
+    echo sprintf('Maintenance from %s to %s', $time->getStart()->format('d/M/Y H:i:s'), $time->getEnd()->format('d/M/Y H:i:s'));
 }</code></pre>
                 </div>
             </div>
