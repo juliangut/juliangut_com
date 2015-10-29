@@ -283,7 +283,7 @@ $janitor->setStrategy(new \MyStrategy);</code></pre>
 
             <div class="row">
                 <div class="col-md-12">
-                    Integration of Janitor with other libraries or frameworks is very easy. Take a look at this two examples.
+                    The integration of Janitor into frameworks is very easy, take a look at this examples.
                 </div>
             </div>
 
@@ -292,12 +292,16 @@ $janitor->setStrategy(new \MyStrategy);</code></pre>
                     <h3>Slim3</h3>
                     <pre><code class="php">use Janitor\Janitor;
 use Janitor\ScheduledWatcher;
+use Slim\App;
+use Slim\Http\Body;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Slim\Http\Body;
 
 // Initialize Janitor with watchers and excluders
 $janitor = new Janitor($watchers, $excluders);
+
+// Create Slim app
+$app = new App;
 
 // Add middleware
 $app->add(function(RequestInterface $request, ResponseInterface $response, callable $next) use ($janitor) {
@@ -317,7 +321,79 @@ $app->add(function(RequestInterface $request, ResponseInterface $response, calla
     }
 
     return $next($request, $response);
-});</code></pre>
+});
+
+$app->run();</code></pre>
+                </div>
+                <div class="col-md-6">
+                    <h3>Zend Expressive</h3>
+                    <pre><code class="php">use Janitor\Janitor;
+use Janitor\ScheduledWatcher;
+use Zend\Expresive\AppFactory;
+use Zend\Diactoros\Stream;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+
+// Initialize Janitor with watchers and excluders
+$janitor = new Janitor($watchers, $excluders);
+
+// Create Expressive application
+$app = AppFactory::create();
+
+// Add middleware
+$app->pipe(function(ServerRequestInterface $request, ResponseInterface $response, callable $next = null) use ($janitor) {
+    if ($janitor->inMaintenance() && !$janitor->isExcluded()) {
+        $watcher = $janitor->getActiveWatcher();
+
+        // Handle maintenance mode
+        $message = 'Maintenance mode is active';
+        if ($watcher instanceof ScheduledWatcher) {
+            $message = 'Maintenance mode is active until' . $watcher->getEnd()->format('Y/m/d H:i:s');
+        }
+
+        $body = new Stream('php://memory');
+        $body->write($message);
+
+        return $response->withStatus(503)->withBody($body);
+    }
+
+    return $next($request, $response);
+});
+
+$app->run();</code></pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Silex</h3>
+                    <pre><code class="php">use Janitor\Janitor;
+use Janitor\ScheduledWatcher;
+use Silex\Application;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+// Initialize Janitor with watchers and excluders
+$janitor = new Janitor($watchers, $excluders);
+
+// Create Silex application
+$app = new Application;
+
+// Add middleware
+$app->before(function(Request $request, Application $app) use ($janitor) {
+    if ($janitor->inMaintenance() && !$janitor->isExcluded()) {
+        $watcher = $janitor->getActiveWatcher();
+
+        // Handle maintenance mode
+        $message = 'Maintenance mode is active';
+        if ($watcher instanceof ScheduledWatcher) {
+            $message = 'Maintenance mode is active until' . $watcher->getEnd()->format('Y/m/d H:i:s');
+        }
+
+        return new Response($message, 503);
+    }
+});
+
+$app->run();</code></pre>
                 </div>
                 <div class="col-md-6">
                     <h3>StackPHP</h3>
