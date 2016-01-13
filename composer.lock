@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "498d04a676482c5a6becf5ecf128e05f",
+    "content-hash": "1219a69b173e9fa6dd4d13d6c212f8f9",
     "packages": [
         {
             "name": "bauncms/baun",
@@ -374,12 +375,12 @@
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console.git",
+                "url": "https://github.com/symfony/console.git",
                 "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/5b91dc4ed5eb08553f57f6df04c4730a73992667",
+                "url": "https://api.github.com/repos/symfony/console/zipball/5b91dc4ed5eb08553f57f6df04c4730a73992667",
                 "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667",
                 "shasum": ""
             },
@@ -432,12 +433,12 @@
             "target-dir": "Symfony/Component/HttpFoundation",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/HttpFoundation.git",
+                "url": "https://github.com/symfony/http-foundation.git",
                 "reference": "8a6337233f08f7520de97f4ffd6f00e947d892f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/8a6337233f08f7520de97f4ffd6f00e947d892f9",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/8a6337233f08f7520de97f4ffd6f00e947d892f9",
                 "reference": "8a6337233f08f7520de97f4ffd6f00e947d892f9",
                 "shasum": ""
             },
@@ -591,16 +592,16 @@
     "packages-dev": [
         {
             "name": "laravel/homestead",
-            "version": "v2.1.4",
+            "version": "v2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/homestead.git",
-                "reference": "219357e2fdc6f7a1955fa15fcecd1c2d87e0cc50"
+                "reference": "5008339af93bbb73efee53cbef9374c5d443c708"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/homestead/zipball/219357e2fdc6f7a1955fa15fcecd1c2d87e0cc50",
-                "reference": "219357e2fdc6f7a1955fa15fcecd1c2d87e0cc50",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/5008339af93bbb73efee53cbef9374c5d443c708",
+                "reference": "5008339af93bbb73efee53cbef9374c5d443c708",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +629,7 @@
                 }
             ],
             "description": "A virtual machine for web artisans.",
-            "time": "2015-07-03 15:56:45"
+            "time": "2016-01-05 19:19:26"
         },
         {
             "name": "symfony/process",
