@@ -94,6 +94,12 @@ body.janitor {
         font-weight: bold;
     }
 
+    .start {
+        pre:first-child {
+            margin-top: 30px;
+        }
+    }
+
     .documentation {
         .menu {
             list-style: none;
