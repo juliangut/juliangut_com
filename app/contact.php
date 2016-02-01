@@ -1,9 +1,5 @@
 <?php
 
-use \Swift_Message;
-use \Swift_MailTransport;
-use \Swift_Mailer;
-
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 if (function_exists('mb_internal_encoding') && ((int) ini_get('mbstring.func_overload')) & 2) {
@@ -12,8 +8,18 @@ if (function_exists('mb_internal_encoding') && ((int) ini_get('mbstring.func_ove
 }
 
 $params = $_POST;
-$body = sprintf('<h2>%s</h2><h4>%s</h4><p>%s</p>', $params['name'], $params['email'], $params['message']);
-$bodyPlain = sprintf("## %s\n ### %s\n%s", $params['name'], $params['email'], $params['message']);
+$body = sprintf(
+    '<html><body><h2>%s</h2><h4>%s</h4><p>%s</p></body></html>',
+    $params['name'],
+    $params['email'],
+    $params['message']
+);
+$bodyPlain = sprintf(
+    "## %s\n ### %s\n%s",
+    $params['name'],
+    $params['email'],
+    $params['message']
+);
 
 $message = Swift_Message::newInstance('New juliangut.com contact')
     ->setFrom(array('no-reply@juliangut.com' => 'juliangut.com'))
@@ -22,7 +28,7 @@ $message = Swift_Message::newInstance('New juliangut.com contact')
     ->addPart($bodyPlain, 'text/plain');
 
 try {
-    $transport = Swift_MailTransport::newInstance('/usr/sbin/sendmail');
+    $transport = Swift_MailTransport::newInstance();
     $mailer = Swift_Mailer::newInstance($transport);
 
     if ($mailer->send($message, $failures)) {
