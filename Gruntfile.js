@@ -92,7 +92,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        'newer:imagemin',
+        //'newer:imagemin',
         'newer:svgmin'
       ]
     },
@@ -133,8 +133,7 @@ module.exports = function (grunt) {
           cwd: '<%= appConfig.app %>/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
           dest: '<%= appConfig.dist %>/public/images'
-        },
-        {
+        }, {
           expand: true,
           cwd: '<%= appConfig.app %>/theme/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
@@ -231,6 +230,16 @@ module.exports = function (grunt) {
           cwd: 'bower_components/fontawesome',
           src: 'fonts/*',
           dest: '<%= appConfig.dist %>/public/theme/styles'
+        }, {
+          expand: true,
+          cwd: '<%= appConfig.app %>/images',
+          src: ['*.{png,jpg,jpeg,gif}'],
+          dest: '<%= appConfig.dist %>/public/images'
+        }, {
+          expand: true,
+          cwd: '<%= appConfig.app %>/theme/images',
+          src: '{,*/}*.{png,jpg,jpeg,gif}',
+          dest: '<%= appConfig.dist %>/public/theme/images'
         }]
       },
       styles: {
