@@ -8,6 +8,16 @@ if (function_exists('mb_internal_encoding') && ((int) ini_get('mbstring.func_ove
 }
 
 $params = $_POST;
+if (!isset($params['name']) || empty($params['name'])) {
+    die('please fill your name');
+}
+if (!isset($params['email']) || !filter_var($params['email'], FILTER_VALIDATE_EMAIL)) {
+    die('please enter a valid email');
+}
+if (!isset($params['message']) || empty($params['message'])) {
+    die('please fill your message');
+}
+
 $body = sprintf(
     '<html><body><h2>%s</h2><h4>%s</h4><p>%s</p></body></html>',
     $params['name'],
@@ -32,9 +42,9 @@ try {
     $mailer = Swift_Mailer::newInstance($transport);
 
     if ($mailer->send($message, $failures)) {
-        echo 'Sent';
+        echo 'sent';
     } else {
-        var_dump($failures);
+        die('please try again');
     }
 } catch (\Swift_TransportException $e) {
     die($e->getMessage());

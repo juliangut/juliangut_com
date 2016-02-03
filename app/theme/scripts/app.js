@@ -250,49 +250,61 @@ define([
         event.preventDefault();
 
         var $form = $(this),
+            emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
             url = $form.attr('action'),
             $message = $form.find('.contact-message'),
-            name = $form.find('input[name=name]').val(),
-            email = $form.find('input[name=email]').val(),
-            mess = $form.find('input[name=message]').val();
+            name = $form.find('input[name=name]').val().replace(/^\s+/, '').replace(/\s+$/, ''),
+            email = $form.find('input[name=email]').val().replace(/^\s+/, '').replace(/\s+$/, ''),
+            mess = $form.find('input[name=message]').val().replace(/^\s+/, '').replace(/\s+$/, '');
         $form.find('.btn').attr('disabled', 'disabled');
 
         $message.html('');
 
-        if (name === '' || email === '' || mess === '') {
-            $message.html('Please fill all the fields before sending');
+        if (name === '' || !emailRegex.test(email) || mess === '') {
+            if (name === '') {
+                $message.html('Please fill your name');
+            } else if (!emailRegex.test(email)) {
+                $message.html('Please enter a valid email');
+            } else if (mess === '') {
+                $message.html('Please fill your message');
+            }
             $message.addClass('alert-danger show');
 
             setTimeout(function() {
                 $message.removeClass('alert-danger show');
+                $message.html('');
                 $form.find('.btn').removeAttr('disabled');
-            }, 5000);
+            }, 3000);
             return;
         }
 
         var post = $.post(url, {name: name, email: email, message: mess});
 
         post.done(function(data) {
-            if (data === 'Sent') {
+            if (data === 'sent') {
                 $message.html('Message sent, thank you for contacting');
                 $message.addClass('alert-success show');
+
+                $form.find('input').val('');
             } else {
-                $message.html('It was not possible to send your message, please try again');
+                $message.html('It was not possible to send your message, ' + data);
                 $message.addClass('alert-warning show');
             }
 
             setTimeout(function() {
                 $message.removeClass('alert-success alert-warning show').html('');
+                $message.html('');
                 $form.find('.btn').removeAttr('disabled');
-            }, 5000);
+            }, 3000);
         }).error(function() {
             $message.html('It was not possible to send your message, please try again');
             $message.addClass('alert-warning show');
 
             setTimeout(function() {
                 $message.removeClass('alert-warning show');
+                $message.html('');
                 $form.find('.btn').removeAttr('disabled');
-            }, 5000);
+            }, 3000);
         });
     });
 });
