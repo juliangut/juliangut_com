@@ -1,7 +1,6 @@
 !.gitignore
 .sass-cache/
 .tmp/
-.vagrant/
 dist/
 bower_components/
 node_modules/

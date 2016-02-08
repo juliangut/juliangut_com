@@ -1,0 +1,35 @@
+{
+  "version": "< 0.4.0",
+  "name": "juliangut",
+  "provider": "virtualbox",
+  "memory": 2048,
+  "cpus": 1,
+  "ip": "192.168.10.10",
+  "hostname": "juliangut.app",
+  "hostaliases": [
+  ],
+  "authorize": "~/.ssh/id_rsa.pub",
+  "keys": [
+    "~/.ssh/id_rsa"
+  ],
+  "folders": [
+    {
+      "map": "./",
+      "to": "/home/vagrant/juliangut"
+    }
+  ],
+  "sites": [
+    {
+      "map": "juliangut.app",
+      "to": "/home/vagrant/juliangut/dist/public"
+    }
+  ],
+  "databases": [
+  ],
+  "variables": [
+    {
+      "key": "APP_ENV",
+      "value": "local"
+    }
+  ]
+}
